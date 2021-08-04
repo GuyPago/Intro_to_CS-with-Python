@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Intro_to_CS.iml" filepath="$PROJECT_DIR$/.idea/Intro_to_CS.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../Python/.idea/guypago.iml" filepath="$PROJECT_DIR$/../Python/.idea/guypago.iml" />
     </modules>
   </component>
 </project>
