@@ -13,10 +13,11 @@ def expand(compressed_dna):
                 n += 1
             dna += compressed_dna[i - 1] * int(compressed_dna[i:i + n])
     print(dna)
+    return dna
 
 
 def test_expand():
-    pass
+    assert expand('G2T11C4A5T1') == 'GGTTTTTTTTTTTCCCCAAAAAT'
 
 
 ##########################################################################
@@ -29,8 +30,8 @@ def test_expand():
 ##########################################################################
 #     Use as many test as you see fit. These tests will not be tested    #
 ##########################################################################
-
-expand('G2T11C4A5T1')
+test_expand()
+expand('g0d2g10k31r2')
 
 
 ##########################################################################
