@@ -2,15 +2,17 @@
 #                           Start of your code                           #
 ##########################################################################
 def perfect(n):
-	pass
+    dividers = [i for i in range(1, n) if n % i == 0]
+    return sum(dividers) == n
 
-def test_perfect(n):
-	pass
+
+def test_perfect():
+    assert perfect(6) and not perfect(5541)
+
 
 ##########################################################################
 #                            End of your code                            #
 ##########################################################################
-
 
 
 ##########################################################################
@@ -18,8 +20,11 @@ def test_perfect(n):
 ##########################################################################
 #     Use as many test as you see fit. These tests will not be tested    #
 ##########################################################################
+test_perfect()
 
-# No provided tests this time...
+for num in range(1, 10000):
+    if perfect(num):
+        print(num)
 
 ##########################################################################
 #                            End of your tests                           #
