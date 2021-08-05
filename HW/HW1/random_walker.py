@@ -14,7 +14,7 @@ def random_walker(n):
         print(tuple(loc))
     x, y = loc
     distance = (x ** 2 + y ** 2) ** 0.5
-    print('Squared distance from origin:', distance ** 0.5)
+    print('Squared distance from origin:', distance ** 2)
 
 
 def random_walker_sim(n, T):
@@ -26,10 +26,9 @@ def random_walker_sim(n, T):
             direction = choice(list(directions.values()))
             loc = [sum(i) for i in zip(loc, direction)]
         x, y = loc
-        distance = ((x ** 2 + y ** 2) ** 0.5) ** 0.5
-        distances.append(distance)
+        sqr_distance = x ** 2 + y ** 2
+        distances.append(sqr_distance)
     print('Mean squared distance for', n, 'steps and', T, 'experiments:', sum(distances) / len(distances))
-
 
 ##########################################################################
 #                            End of your code                            #
@@ -41,8 +40,8 @@ def random_walker_sim(n, T):
 ##########################################################################
 #     Use as many test as you see fit. These tests will not be tested    #
 ##########################################################################
-random_walker(10)
-random_walker_sim(100, 1000)
+random_walker(40)
+random_walker_sim(40, 1000)
 
 ##########################################################################
 #                            End of your tests                           #
