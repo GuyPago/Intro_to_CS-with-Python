@@ -23,6 +23,7 @@ print(approx_pi(10))  # should return 3.0418396189294032
 print(approx_pi(1000))  # should return 3.140592653839794
 print(approx_pi(100000))  # should return 3.1415826535897198
 print(approx_pi(1000000))
+print(approx_pi(0))
 ##########################################################################
 #                            End of your tests                           #
 ##########################################################################

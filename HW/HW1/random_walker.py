@@ -30,6 +30,8 @@ def random_walker_sim(n, T):
         distances.append(sqr_distance)
     print('Mean squared distance for', n, 'steps and', T, 'experiments:', sum(distances) / len(distances))
 
+    # Hypo - Squared distance is equal to the number of steps. COOL!!!!
+
 ##########################################################################
 #                            End of your code                            #
 ##########################################################################
@@ -41,7 +43,7 @@ def random_walker_sim(n, T):
 #     Use as many test as you see fit. These tests will not be tested    #
 ##########################################################################
 random_walker(40)
-random_walker_sim(40, 1000)
+random_walker_sim(50, 1000)
 
 ##########################################################################
 #                            End of your tests                           #

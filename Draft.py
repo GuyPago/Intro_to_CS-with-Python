@@ -1,7 +1,15 @@
 
-food = ['hamburger', 'sushi', 'pizza']
-price = [30.5, 40, 60.99]
-calories = [500, 400, 470]
+def int_to_str(num):
+    iter = 0
+    digits = '0123456789'
+    if num == 0:
+        return '0'
+    result = ''
+    while num > 0:
+        result = digits[num % 10] + result
+        num //= 10
+        iter += 1
+    return result, iter
 
-menu = {food[i]: {price[i]: calories[i]} for i in range(len(food))}
-print(menu)
+
+print(int_to_str(485484600))
