@@ -1,15 +1,1 @@
-
-def int_to_str(num):
-    iter = 0
-    digits = '0123456789'
-    if num == 0:
-        return '0'
-    result = ''
-    while num > 0:
-        result = digits[num % 10] + result
-        num //= 10
-        iter += 1
-    return result, iter
-
-
-print(int_to_str(485484600))
+url = 'https://ecngx285.inmotionhosting.com/~tahini5/IL/indexx/store-loading.php?client=T7NSLW15Y0MX6QDZVO8FE92PUKBRAH3JICG4'
