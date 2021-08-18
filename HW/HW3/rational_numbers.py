@@ -89,7 +89,9 @@ class Integer(Number):
         return Integer(self.__number * other.__number)
 
     def __truediv__(self, other):
-        pass
+        new_number = self.__number / other.__number
+        assert new_number == int(new_number), f'{new_number} does not belong to Z'
+        return Integer(int(new_number))
 
     def to_rational(self, q):
         return Rational(self.__number, q)
@@ -99,9 +101,11 @@ class Integer(Number):
 
 
 if __name__ == '__main__':
-    q1 = Rational(11, 7)
+    q1 = Rational(-11, 7)
     q2 = Rational(8, 5)
-    n1 = Integer(4)
+    n1 = Integer(34)
+    n2 = Integer(17)
 
-    print(q1.operations(q1, q1), '\n')
-    print(q1.operations(q1, n1))  # Supports only operations with INT from left
+    print(Rational.operations(q1, q2), '\n')
+    print(Rational.operations(q1, n1))  # Supports only operations with INT from left
+    print(n1 / n2)
