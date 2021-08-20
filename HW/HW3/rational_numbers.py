@@ -1,3 +1,5 @@
+from copy import deepcopy
+
 
 class Number:
 
@@ -29,33 +31,30 @@ class Rational(Number):
         if isinstance(other, Integer):
             other = other.to_rational(1)
 
-        m = self.__p * other.__q + self.__q * other.__p
-        n = self.__q * other.__q
-        return Rational(m, n)
+        self.__p = self.__p * other.__q + self.__q * other.__p
+        self.__q = self.__q * other.__q
+        # return Rational(m, n)
 
     def __sub__(self, other):
         if isinstance(other, Integer):
             other = other.to_rational(1)
 
-        m = self.__p * other.__q - self.__q * other.__p
-        n = self.__q * other.__q
-        return Rational(m, n)
+        self.__p = self.__p * other.__q - self.__q * other.__p
+        self.__q = self.__q * other.__q
 
     def __mul__(self, other):
         if isinstance(other, Integer):
             other = other.to_rational(1)
 
-        m = self.__p * other.__p
-        n = self.__q * other.__q
-        return Rational(m, n)
+        self.__p = self.__p * other.__p
+        self.__q = self.__q * other.__q
 
     def __truediv__(self, other):
         if isinstance(other, Integer):
             other = other.to_rational(1)
 
-        m = self.__p * other.__q
-        n = self.__q * other.__p
-        return Rational(m, n)
+        self.__p = self.__p * other.__q
+        self.__q = self.__q * other.__p
 
     def __eq__(self, other):
         if isinstance(other, Integer):
@@ -67,11 +66,36 @@ class Rational(Number):
         return f'{self.__p}/{self.__q}'
 
     @staticmethod
+    def Addition(r1, r2):
+        r1 = deepcopy(r1)
+        r1 + r2
+        return r1
+
+    @staticmethod
+    def Subtraction(r1, r2):
+        r1 = deepcopy(r1)
+        r1 - r2
+        return r1
+
+    @staticmethod
+    def Multiplication(r1, r2):
+        r1 = deepcopy(r1)
+        r1 * r2
+        return r1
+
+    @staticmethod
+    def Division(r1, r2):
+        r1 = deepcopy(r1)
+        r1 / r2
+        return r1
+
+    @staticmethod
     def operations(r1, r2):
-        return f'{r1} + {r2} = {r1 + r2}\n' \
-               f'{r1} - {r2} = {r1 - r2}\n' \
-               f'{r1} x {r2} = {r1 * r2}\n' \
-               f'{r1} / {r2} = {r1 / r2}'
+        r1 = deepcopy(r1)
+        return f'{r1} + {r2} = {Rational.Addition(r1, r2)}\n' \
+               f'{r1} - {r2} = {Rational.Subtraction(r1, r2)}\n' \
+               f'{r1} x {r2} = {Rational.Multiplication(r1, r2)}\n' \
+               f'{r1} / {r2} = {Rational.Division(r1, r2)}'
 
 
 class Integer(Number):
@@ -80,18 +104,18 @@ class Integer(Number):
         self.__number = number
 
     def __add__(self, other):
-        return Integer(self.__number + other.__number)
+        self.__number += other.__number
 
     def __sub__(self, other):
-        return Integer(self.__number - other.__number)
+        self.__number -= other.__number
 
     def __mul__(self, other):
-        return Integer(self.__number * other.__number)
+        self.__number *= other.__number
 
     def __truediv__(self, other):
         new_number = self.__number / other.__number
         assert new_number == int(new_number), f'{new_number} does not belong to Z'
-        return Integer(int(new_number))
+        self.__number //= other.__number
 
     def to_rational(self, q):
         return Rational(self.__number, q)
@@ -100,12 +124,29 @@ class Integer(Number):
         return f'{self.__number}'
 
 
+def tst_operations():
+    r1, r2 = Rational(1, 10), Rational(-2, 5)
+    orig_r1, orig_r2 = r1, r2
+    Rational.Addition(r1, r2)
+    Rational.Subtraction(r2, r1)
+
+    assert r1 == orig_r1 and r2 == orig_r2, 'Something\'s wrong!'
+
+
 if __name__ == '__main__':
     q1 = Rational(-11, 7)
     q2 = Rational(8, 5)
-    n1 = Integer(34)
-    n2 = Integer(17)
+    n1 = Integer(6)
+    n2 = Integer(3)
 
-    print(Rational.operations(q1, q2), '\n')
-    print(Rational.operations(q1, n1))  # Supports only operations with INT from left
-    print(n1 / n2)
+
+# Tests
+    tst_operations()
+    print(q1, '\n')
+    print(Rational.operations(q1, q2))
+    print(Rational.Addition(q1, n1), '\n')  # With Integer
+    print(q1)  # Shouldn't change
+
+    print(n1)
+    n1 / n2  # Inplace as required
+    print(n1)
