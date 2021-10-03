@@ -7,7 +7,6 @@ him = Customer('Nir Taggar', 'Amos Oz 3', '1998-06-14')
 p1 = Point(3, 3)
 p2 = Point(2, 4)
 
-
 def print_account_info(account):
     print(f'Customer: {account.customer}')
     print(f'Account id: {account.account_number}')
